@@ -37,7 +37,7 @@ const SignupScreen = props => {
 // Form validation schema
 const SignUpSchema = Yup.object().shape({
     userName: Yup.string().min(6, 'Too short - should be 6 chars minimum!').required('Required'),
-    phoneNumber: Yup.number().min(10, 'Phone Number should be of 10-digit.').max(10, 'Phone Number should be of 10-digit.').required('required').positive().integer(),
+    phoneNumber: Yup.number().min(10, 'Phone Number should be of 10-digit.').required('required').positive().integer(),
     email: Yup.string().email('Email is not in proper format.').min(6, 'Too short - should be 6 chars minimum!').required('Required'),
     password: Yup.string().min(6, 'Too short - should be 6 chars minimum!').required('Required'),
     repassword: Yup.string().min(6, 'Too short - should be 6 chars minimum!').required('Required'),
@@ -59,7 +59,7 @@ const onSubmit = (e, values) => {
         return false;
     }
     // checking for phone number whether it is of 10 digit or not.
-    if(phoneNumber.length > 10){
+    if(phoneNumber.length !== 10){
         setError({bool:true, msg:"Phone Number should be of 10-digit."});
         return false;
     }

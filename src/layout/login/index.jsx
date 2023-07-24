@@ -42,9 +42,14 @@ const onSubmit = (e, values) =>{
         // validating Email.
         if(!validateEmail(values.email)){
             setError({bool:true, msg:"Email Address / Phone number is not valid, Please provide a valid Email or phone number "});
-        } else {
-            setError({bool:false, msg:""});
+            return false;
         }
+        if(values.password.length < 6){
+            setError({bool:true, msg:"Password is less than 6 char minimum."});
+            return false;
+        } 
+
+        setError({bool:false, msg:""});
 
         dispatch( authAction.authLogin({userphone:email, userpassword:password}));
     } else {
